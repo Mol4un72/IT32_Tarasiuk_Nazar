@@ -1,0 +1,13 @@
+<section class="news">
+  <h2>Останні новини</h2>
+
+  <app-news-card
+    [title]="newsTitle"
+    [author]="newsAuthor"
+    (read)="onRead()">
+  </app-news-card>
+
+  @if (message) {
+    <p class="message">{{ message }}</p>
+  }
+</section>
