@@ -1,78 +1,11 @@
 import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
-
-interface Movie {
-  title: string;
-  year: number;
-  rating: number;
-}
+import { RouterLink, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
-  imports: [FormsModule, CommonModule],
+  imports: [RouterOutlet, RouterLink],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
 export class App {
-
-  movies: Movie[] = [
-    {
-      title: 'Interstellar',
-      year: 2014,
-      rating: 9
-    },
-    {
-      title: 'Avatar',
-      year: 2009,
-      rating: 8
-    },
-    {
-      title: 'Titanic',
-      year: 1997,
-      rating: 7
-    }
-  ];
-
-  newTitle: string = '';
-  newYear: number | null = null;
-  newRating: number | null = null;
-
-  addMovie(): void {
-    if (
-      this.newTitle.trim() === '' ||
-      this.newYear === null ||
-      this.newRating === null
-    ) {
-      return;
-    }
-
-    const newMovie: Movie = {
-      title: this.newTitle,
-      year: this.newYear,
-      rating: this.newRating
-    };
-
-    this.movies.push(newMovie);
-
-    this.newTitle = '';
-    this.newYear = null;
-    this.newRating = null;
-  }
-
-  deleteMovie(index: number): void {
-    this.movies.splice(index, 1);
-  }
-
-  getRatingClass(rating: number): string {
-    if (rating >= 8) {
-      return 'high-rating';
-    }
-
-    if (rating >= 5) {
-      return 'medium-rating';
-    }
-
-    return 'low-rating';
-  }
 }

@@ -1,85 +1,26 @@
 .container {
-  width: 800px;
-  margin: 30px auto;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 30px;
   font-family: Arial, sans-serif;
 }
 
-h1 {
-  text-align: center;
+nav {
+  display: flex;
+  gap: 20px;
+  margin: 20px 0;
 }
 
-.counter {
-  text-align: center;
-  font-size: 20px;
+nav a {
+  text-decoration: none;
   font-weight: bold;
+  color: #333;
 }
 
-.form {
-  padding: 20px;
-  margin-bottom: 25px;
-  border: 1px solid #ccc;
-  border-radius: 10px;
+nav a:hover {
+  text-decoration: underline;
 }
 
-.form h2 {
-  margin-top: 0;
-}
-
-label {
-  display: block;
-  margin-bottom: 12px;
-}
-
-input {
-  display: block;
-  width: 95%;
-  padding: 10px;
-  margin-top: 5px;
-  border: 1px solid #aaa;
-  border-radius: 5px;
-}
-
-button {
-  padding: 10px 18px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  background: #333;
-  color: white;
-}
-
-button:disabled {
-  background: #aaa;
-  cursor: not-allowed;
-}
-
-.movie {
-  padding: 20px;
-  margin-bottom: 15px;
-  border-radius: 10px;
-  border: 2px solid;
-}
-
-.high-rating {
-  border-color: green;
-  background-color: #e8f5e9;
-}
-
-.medium-rating {
-  border-color: orange;
-  background-color: #fff8e1;
-}
-
-.low-rating {
-  border-color: red;
-  background-color: #ffebee;
-}
-
-.recommended {
-  font-weight: bold;
-  color: green;
-}
-
-.delete-button {
-  background: #d32f2f;
+hr {
+  margin-bottom: 30px;
 }

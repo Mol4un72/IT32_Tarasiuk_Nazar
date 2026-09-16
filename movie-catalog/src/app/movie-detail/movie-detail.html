@@ -1,0 +1,31 @@
+<h2>Детальна інформація про фільм</h2>
+
+<div *ngIf="movie; else notFound">
+
+  <h3>{{ movie.title }}</h3>
+
+  <p>
+    <strong>ID:</strong> {{ movie.id }}
+  </p>
+
+  <p>
+    <strong>Рік:</strong> {{ movie.year }}
+  </p>
+
+  <p>
+    <strong>Рейтинг:</strong> {{ movie.rating }}/10
+  </p>
+
+</div>
+
+<ng-template #notFound>
+
+  <p>
+    Фільм із таким id не знайдено.
+  </p>
+
+</ng-template>
+
+<a routerLink="/movies">
+  ← Повернутися до списку фільмів
+</a>
