@@ -1,101 +1,17 @@
-<div class="movies-page">
+<h2>Фільми</h2>
 
-  <h2>Список фільмів</h2>
+<div *ngFor="let movie of movies">
 
-  <p class="counter">
-    Всього фільмів: {{ movies.length }}
-  </p>
+  <h3>{{ movie.title }}</h3>
 
-  <div class="form">
+  <p>Режисер: {{ movie.director }}</p>
 
-    <h3>Додати новий фільм</h3>
+  <p>Опис: {{ movie.description }}</p>
 
-    <label>
-      Назва:
+  <a [routerLink]="['/movie', movie.id]">
+    Детальніше
+  </a>
 
-      <input
-        type="text"
-        [(ngModel)]="newTitle"
-        placeholder="Введіть назву фільму"
-      >
-    </label>
-
-    <label>
-      Рік:
-
-      <input
-        type="number"
-        [(ngModel)]="newYear"
-        placeholder="Введіть рік"
-      >
-    </label>
-
-    <label>
-      Рейтинг:
-
-      <input
-        type="number"
-        min="1"
-        max="10"
-        [(ngModel)]="newRating"
-        placeholder="Від 1 до 10"
-      >
-    </label>
-
-    <button
-      (click)="addMovie()"
-      [disabled]="newTitle.trim() === ''"
-    >
-      Додати фільм
-    </button>
-
-  </div>
-
-  <div class="movies">
-
-    <div
-      class="movie"
-      *ngFor="let movie of movies; let i = index"
-      [ngClass]="getRatingClass(movie.rating)"
-    >
-
-      <h3>{{ movie.title }}</h3>
-
-      <p>
-        Рік: {{ movie.year }}
-      </p>
-
-      <p>
-        Рейтинг: {{ movie.rating }}/10
-      </p>
-
-      <p
-        class="recommended"
-        *ngIf="movie.rating >= 8"
-      >
-        Рекомендовано
-      </p>
-
-      <div class="buttons">
-
-        <a
-          class="details-button"
-          [routerLink]="['/movie', movie.id]"
-        >
-          Переглянути деталі
-        </a>
-
-        <button
-          class="delete-button"
-          (click)="deleteMovie(i)"
-        >
-          Видалити
-        </button>
-
-      </div>
-
-    </div>
-
-  </div>
+  <hr>
 
 </div>

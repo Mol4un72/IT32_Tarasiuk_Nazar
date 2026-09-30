@@ -1,10 +1,10 @@
-import { Injectable, signal } from '@angular/core';
+import { Injectable } from '@angular/core';
 
 export interface Movie {
   id: number;
   title: string;
-  year: number;
-  rating: number;
+  director: string;
+  description: string;
 }
 
 @Injectable({
@@ -12,45 +12,41 @@ export interface Movie {
 })
 export class MovieService {
 
-  private movies = signal<Movie[]>([
+  private movies: Movie[] = [
     {
       id: 1,
       title: 'Interstellar',
-      year: 2014,
-      rating: 9
+      director: 'Christopher Nolan',
+      description: 'Науково-фантастичний фільм'
     },
     {
       id: 2,
       title: 'Avatar',
-      year: 2009,
-      rating: 8
+      director: 'James Cameron',
+      description: 'Фантастичний фільм про іншу планету'
     },
     {
       id: 3,
       title: 'Titanic',
-      year: 1997,
-      rating: 7
+      director: 'James Cameron',
+      description: 'Драма про відомий корабель Titanic'
     }
-  ]);
+  ];
 
-  getMovies() {
+  getItems() {
     return this.movies;
   }
 
-  addMovie(title: string, year: number, rating: number): void {
-    const newMovie: Movie = {
-      id: Date.now(),
-      title: title,
-      year: year,
-      rating: rating
-    };
-
-    this.movies.update(movies => [...movies, newMovie]);
+  getItemById(id: number) {
+    return this.movies.find(movie => movie.id === id);
   }
 
-  removeMovie(id: number): void {
-    this.movies.update(movies =>
-      movies.filter(movie => movie.id !== id)
-    );
+  addItem(movie: Omit<Movie, 'id'>) {
+    const newMovie: Movie = {
+      id: this.movies.length + 1,
+      ...movie
+    };
+
+    this.movies.push(newMovie);
   }
 }

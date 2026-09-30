@@ -1,0 +1,110 @@
+<h2>Додати фільм</h2>
+
+<form
+  #itemForm="ngForm"
+  (ngSubmit)="addMovie(itemForm)"
+>
+
+  <!-- Назва -->
+
+  <label>
+    Назва:
+    <input
+      type="text"
+      name="title"
+      [(ngModel)]="title"
+      required
+      minlength="3"
+      maxlength="50"
+      #titleRef="ngModel"
+    >
+  </label>
+
+  <div *ngIf="submitted && titleRef.invalid">
+
+    <small *ngIf="titleRef.errors?.['required']">
+      Назва обов'язкова
+    </small>
+
+    <small *ngIf="titleRef.errors?.['minlength']">
+      Мінімум 3 символи
+    </small>
+
+    <small *ngIf="titleRef.errors?.['maxlength']">
+      Максимум 50 символів
+    </small>
+
+  </div>
+
+
+  <br>
+
+
+  <!-- Режисер -->
+
+  <label>
+    Режисер:
+    <input
+      type="text"
+      name="director"
+      [(ngModel)]="director"
+      required
+      minlength="3"
+      maxlength="50"
+      #directorRef="ngModel"
+    >
+  </label>
+
+  <div *ngIf="submitted && directorRef.invalid">
+
+    <small *ngIf="directorRef.errors?.['required']">
+      Режисер обов'язковий
+    </small>
+
+    <small *ngIf="directorRef.errors?.['minlength']">
+      Мінімум 3 символи
+    </small>
+
+    <small *ngIf="directorRef.errors?.['maxlength']">
+      Максимум 50 символів
+    </small>
+
+  </div>
+
+
+  <br>
+
+
+  <!-- Опис -->
+
+  <label>
+    Опис:
+    <textarea
+      name="description"
+      [(ngModel)]="description"
+      required
+      minlength="10"
+      #descriptionRef="ngModel"
+    ></textarea>
+  </label>
+
+  <div *ngIf="submitted && descriptionRef.invalid">
+
+    <small *ngIf="descriptionRef.errors?.['required']">
+      Опис обов'язковий
+    </small>
+
+    <small *ngIf="descriptionRef.errors?.['minlength']">
+      Мінімум 10 символів
+    </small>
+
+  </div>
+
+
+  <br>
+
+  <button type="submit">
+    Додати фільм
+  </button>
+
+</form>
