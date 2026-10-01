@@ -13,9 +13,11 @@ export class AddMovie {
 
   submitted = false;
 
-  title = '';
-  director = '';
-  description = '';
+  newMovie = {
+    title: '',
+    director: '',
+    description: ''
+  };
 
   constructor(
     private movieService: MovieService,
@@ -31,9 +33,9 @@ export class AddMovie {
     }
 
     this.movieService.addItem({
-      title: this.title,
-      director: this.director,
-      description: this.description
+      title: this.newMovie.title,
+      director: this.newMovie.director,
+      description: this.newMovie.description
     });
 
     form.resetForm();
